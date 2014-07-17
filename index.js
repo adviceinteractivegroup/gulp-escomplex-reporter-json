@@ -9,6 +9,10 @@ var PluginError = gutil.PluginError;
 const PLUGIN_NAME = 'gulp-escomplex-reporter-json';
 
 function gulpESComplexReporterJSON ( ) {
+  // reporting information
+  var data = { };
+  data.reports = [ ];
+
   // Creating a stream through which each file will pass
   var stream = through.obj(function(file, enc, callback) {
     if (file.isStream()) {
@@ -26,12 +30,29 @@ function gulpESComplexReporterJSON ( ) {
           contents: new Buffer(json.render(null, analysis))
         });
 
+        data.reports.push(newFile.path.split(newFile.base)[1]);
+        if (!data.baseDir) {
+          data.baseDir = file.base;
+          data.cwd = file.cwd;
+        }
+
         this.push(newFile);
       } catch (err) {
         return callback(new PluginError(PLUGIN_NAME, 'Unable to decode escomplex analysis'));
       }
     }
 
+    callback();
+  }, function (callback) {
+    data.created = new Date().toISOString();
+    var indexFile = new gutil.File({
+      cwd: data.cwd,
+      base: data.baseDir,
+      path: data.baseDir + "/index.json",
+      contents: new Buffer(json.render(null, data))
+    });
+
+    this.push(indexFile);
     callback();
   });
 
