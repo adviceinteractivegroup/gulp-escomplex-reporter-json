@@ -1,0 +1,30 @@
+{
+  "name": "gulp-escomplex-reporter-json",
+  "version": "0.1.0",
+  "description": "JSON Reporter for gulp-escomplex",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/analysis.js"
+  },
+  "keywords": [
+    "escomplex",
+    "reporter",
+    "json",
+    "gulpplugin",
+    "complex",
+    "complexity",
+    "reporter"
+  ],
+  "author": "Jerry Sievert <code@legitimatesounding.com> (http://legitimatesounding.com/blog/)",
+  "license": "MIT",
+  "dependencies": {
+    "through2": "^0.5.1",
+    "gulp-util": "^2.2.20"
+  },
+  "devDependencies": {
+    "tape": "^2.13.3",
+    "vinyl": "^0.2.3",
+    "gulp": "^3.8.6",
+    "gulp-escomplex": "^0.1.0"
+  }
+}
