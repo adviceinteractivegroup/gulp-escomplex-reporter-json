@@ -2,6 +2,7 @@ var through = require('through2');
 var gutil = require('gulp-util');
 
 var json = require('./lib/json');
+var pack = require('./package.json');
 
 var PluginError = gutil.PluginError;
 
@@ -34,6 +35,8 @@ function gulpESComplexReporterJSON ( ) {
         if (!data.baseDir) {
           data.baseDir = file.base;
           data.cwd = file.cwd;
+          data.reporterName = pack.name;
+          data.reporterVersion = pack.version;
         }
 
         this.push(newFile);
