@@ -32,11 +32,18 @@ function gulpESComplexReporterJSON ( ) {
         });
 
         data.reports.push(newFile.path.split(newFile.base)[1]);
+
         if (!data.baseDir) {
           data.baseDir = file.base;
           data.cwd = file.cwd;
           data.reporterName = pack.name;
           data.reporterVersion = pack.version;
+          if (analysis.meta) {
+            data.packageName = analysis.meta.packageName;
+            data.packageVersion = analysis.meta.packageVersion;
+            data.analysis = analysis.meta.analysis;
+            data.analysisVersion = analysis.meta.analysisVersion;
+          }
         }
 
         this.push(newFile);
