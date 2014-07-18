@@ -39,10 +39,21 @@ function gulpESComplexReporterJSON ( ) {
           data.reporterName = pack.name;
           data.reporterVersion = pack.version;
           if (analysis.meta) {
-            data.packageName = analysis.meta.packageName;
-            data.packageVersion = analysis.meta.packageVersion;
-            data.analysis = analysis.meta.analysis;
-            data.analysisVersion = analysis.meta.analysisVersion;
+            if (analysis.meta.packageName) {
+              data.packageName = analysis.meta.packageName;
+            }
+ 
+            if (analysis.meta.packageVersion) {
+              data.packageVersion = analysis.meta.packageVersion;
+            }
+
+            if (analysis.meta.analysis) {
+              data.analysis = analysis.meta.analysis;
+            }
+
+            if (analysis.meta.analysisVersion) {
+              data.analysisVersion = analysis.meta.analysisVersion;
+            }
           }
         }
 
