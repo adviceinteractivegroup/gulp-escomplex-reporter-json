@@ -42,7 +42,7 @@ function gulpESComplexReporterJSON ( ) {
             if (analysis.meta.packageName) {
               data.packageName = analysis.meta.packageName;
             }
- 
+
             if (analysis.meta.packageVersion) {
               data.packageVersion = analysis.meta.packageVersion;
             }
