@@ -1,6 +1,6 @@
 {
   "name": "gulp-escomplex-reporter-json",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "JSON Reporter for gulp-escomplex",
   "main": "index.js",
   "scripts": {
@@ -19,12 +19,12 @@
   "license": "MIT",
   "dependencies": {
     "through2": "^0.5.1",
-    "gulp-util": "^2.2.20"
+    "gulp-util": "^3.0.1"
   },
   "devDependencies": {
     "tape": "^2.13.3",
-    "vinyl": "^0.2.3",
     "gulp": "^3.8.6",
+    "vinyl": "^0.4.2",
     "gulp-escomplex": "^0.1.0"
   },
   "bugs": {

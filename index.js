@@ -24,14 +24,12 @@ function gulpESComplexReporterJSON ( ) {
       try {
         var analysis = JSON.parse(file.analysis.toString('utf8'));
 
-        var newFile = new gutil.File({
-          cwd: file.cwd,
-          base: file.base,
-          path: file.path + ".json",
-          contents: new Buffer(json.render(null, analysis))
-        });
+        var newFile = file.clone();
 
-        data.reports.push(newFile.path.split(newFile.base)[1]);
+        newFile.contents = new Buffer(json.render(null, analysis));
+        newFile.path = file.path + ".json";
+
+        data.reports.push(newFile.path.split(newFile.cwd + "/")[1]);
 
         if (!data.baseDir) {
           data.baseDir = file.base;
