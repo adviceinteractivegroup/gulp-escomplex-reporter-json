@@ -19,7 +19,10 @@ gulp.task('complexity', function () {
   return gulp.src([
     'index.js',
     'gulpfile.js'
-  ])
+  ],
+  {
+    base: __dirname
+  })
   .pipe(complexity())
   .pipe(reporter())
   .pipe(gulp.dest("complexity"));
