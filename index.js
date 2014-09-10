@@ -1,5 +1,6 @@
 var through = require('through2');
 var gutil = require('gulp-util');
+var path = require('path');
 
 var json = require('./lib/json');
 var pack = require('./package.json');
@@ -29,7 +30,7 @@ function gulpESComplexReporterJSON ( ) {
         newFile.contents = new Buffer(json.render(null, analysis));
         newFile.path = file.path + ".json";
 
-        data.reports.push(newFile.path.split(newFile.cwd + "/")[1]);
+        data.reports.push(newFile.path.split(newFile.cwd + path.sep)[1]);
 
         if (!data.baseDir) {
           data.baseDir = file.base;
