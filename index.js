@@ -29,12 +29,14 @@ function gulpESComplexReporterJSON ( ) {
 
         newFile.contents = new Buffer(json.render(null, analysis));
         newFile.path = file.path + ".json";
-
+        newFile.path = newFile.path.replace(/\\/g, '/');
+        newFile.cwd = newFile.cwd.replace(/\\/g, '/');
+        
         data.reports.push(newFile.path.split(newFile.cwd + path.sep)[1]);
 
         if (!data.baseDir) {
-          data.baseDir = file.base;
-          data.cwd = file.cwd;
+          data.baseDir = file.base.replace(/\\/g, '/');
+          data.cwd = file.cwd.replace(/\\/g, '/');
           data.reporterName = pack.name;
           data.reporterVersion = pack.version;
           if (analysis.meta) {
